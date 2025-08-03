@@ -1,0 +1,35 @@
+# Full MATE Desktop
+task-mate-desktop
+mate-desktop-environment
+mate-desktop-environment-extras
+
+# PipeWire for audio
+pipewire
+pipewire-audio
+pipewire-pulse
+wireplumber
+libspa-0.2-bluetooth
+
+# Bluetooth
+bluez
+bluetooth
+blueman
+bluez-tools
+pulseaudio-module-bluetooth
+
+# Display/login manager
+lightdm
+
+# Useful desktop apps
+firefox-esr
+vlc
+gimp
+file-roller
+
+# Network
+network-manager
+network-manager-gnome
+
+# Essential tools
+sudo
+policykit-1
