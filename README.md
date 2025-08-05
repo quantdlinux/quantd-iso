@@ -216,6 +216,9 @@ live-image-amd64.hybrid.iso
 
 ---
 
+## Download the ISO
+[https://archive.org/embed/live-image-amd64.hybrid_202508](./https://archive.org/embed/live-image-amd64.hybrid_202508)
+
 ## 🧪 Test the ISO
 
 ### Via QEMU:
@@ -236,11 +239,11 @@ Replace `/dev/sdX` with your USB device.
 
 ## 📜 License
 
-MIT License or GPLv3 — your choice.
+GPLv3
 
 ---
 
-## 🧩 Credits
+## 🧩 Credits    
 
 Based on [Debian Live Build](https://wiki.debian.org/DebianLive).  
 MATE, PipeWire, Debian — all credits to the respective upstream developers.
