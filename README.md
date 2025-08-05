@@ -217,7 +217,7 @@ live-image-amd64.hybrid.iso
 ---
 
 ## Download the ISO
-[https://archive.org/embed/live-image-amd64.hybrid_202508](./https://archive.org/embed/live-image-amd64.hybrid_202508)
+[https://archive.org/embed/live-image-amd64.hybrid_202508](https://archive.org/embed/live-image-amd64.hybrid_202508)
 
 ## 🧪 Test the ISO
 
