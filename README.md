@@ -226,8 +226,10 @@ live-image-amd64.hybrid.iso
 ---
 
 ## Download the ISO
-[Latest]()
-[https://archive.org/details/live-image-amd64.hybrid_202508](https://archive.org/download/live-image-amd64.hybrid_202508/live-image-amd64.hybrid.iso)
+### Latest
+[20250807](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)  
+### Archives
+1. [20250805](https://archive.org/download/live-image-amd64.hybrid_202508/live-image-amd64.hybrid.iso)
 
 ## 🧪 Test the ISO
 
