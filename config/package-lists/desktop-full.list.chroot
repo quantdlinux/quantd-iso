@@ -15,7 +15,7 @@ bluez
 bluetooth
 blueman
 bluez-tools
-pulseaudio-module-bluetooth
+#pulseaudio-module-bluetooth
 
 # Display/login manager
 lightdm
@@ -25,6 +25,13 @@ firefox-esr
 vlc
 gimp
 file-roller
+meld
+ffmpeg
+gparted
+remmina
+xrdp
+ftp
+tigervnc-viewer
 
 # Network
 network-manager

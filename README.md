@@ -79,12 +79,12 @@ config/package-lists/desktop-full.list.chroot
 Add the following contents:
 
 ```
-# MATE Desktop
+# Full MATE Desktop
 task-mate-desktop
 mate-desktop-environment
 mate-desktop-environment-extras
 
-# PipeWire audio
+# PipeWire for audio
 pipewire
 pipewire-audio
 pipewire-pulse
@@ -96,22 +96,28 @@ bluez
 bluetooth
 blueman
 bluez-tools
-pulseaudio-module-bluetooth
 
 # Display/login manager
 lightdm
 
-# Default desktop apps
+# Useful desktop apps
 firefox-esr
 vlc
 gimp
 file-roller
+meld
+ffmpeg
+gparted
+remmina
+xrdp
+ftp
+tigervnc-viewer
 
-# Networking
+# Network
 network-manager
 network-manager-gnome
 
-# Utilities
+# Essential tools
 sudo
 policykit-1
 ```
@@ -205,6 +211,9 @@ ln -s /lib/systemd/system/bluetooth.service config/includes.chroot/etc/systemd/s
 
 ```
 sudo lb clean
+
+lb config   --distribution bookworm   --debian-installer live   --archive-areas "main contrib non-free non-free-firmware"   --binary-images iso-hybrid   --mirror-bootstrap http://deb.debian.org/debian/   --mirror-binary http://deb.debian.org/debian/   --mirror-chroot http://deb.debian.org/debian/   --mirror-binary-security http://security.debian.org/   --mirror-chroot-security http://security.debian.org/   --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+
 sudo lb build
 ```
 
@@ -217,6 +226,7 @@ live-image-amd64.hybrid.iso
 ---
 
 ## Download the ISO
+[Latest]()
 [https://archive.org/details/live-image-amd64.hybrid_202508](https://archive.org/download/live-image-amd64.hybrid_202508/live-image-amd64.hybrid.iso)
 
 ## 🧪 Test the ISO
@@ -240,6 +250,7 @@ Replace `/dev/sdX` with your USB device.
 ## 📜 License
 
 GPLv3
+Education Purposes Only
 
 ---
 
