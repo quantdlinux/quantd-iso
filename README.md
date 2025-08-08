@@ -255,7 +255,7 @@ Replace `/dev/sdX` with your USB device.
 
 ## 📜 License
 
-GPLv3
+GPLv3  
 Education Purposes Only
 
 ---
