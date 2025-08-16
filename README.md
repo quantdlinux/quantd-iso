@@ -165,12 +165,14 @@ Contents:
 
 ```
 NAME="Quantd Linux"
-VERSION="1.0"
+VERSION="2.0 (Trixie)"
 ID=quantd
-PRETTY_NAME="Quantd Linux 1.0 (trixie)"
-HOME_URL="https://quantdlinux.example.com"
-SUPPORT_URL="https://quantdlinux.example.com/support"
-BUG_REPORT_URL="https://quantdlinux.example.com/bugs"
+ID_LIKE=debian
+VERSION_ID="2.0"
+PRETTY_NAME="Quantd Linux 2.0 (based on Debian 13 'Trixie')"
+ANSI_COLOR="0;36"
+HOME_URL="https://quantdlinux.github.io/"
+BUG_REPORT_URL="https://quantdlinux.github.io/issues"
 ```
 
 ---
@@ -230,13 +232,14 @@ live-image-amd64.hybrid.iso
 
 ---
 ## 📷 Screenshots
-![Quantd Linux Boot](https://i.postimg.cc/V67zCxkk/Screenshot-at-2025-08-08-12-03-37.png)
-![Quantd Linux Desktop](https://i.postimg.cc/sgBGDJKW/Screenshot-at-2025-08-08-12-11-49.png)
-![Quantd Linux Terminal](https://i.postimg.cc/Kz5Rspc6/Screenshot-at-2025-08-08-12-11-08.png)
-![Quantd Linux System](https://i.postimg.cc/cCb1VVpb/Screenshot-at-2025-08-08-12-09-55.png)
+![Quantd Linux Boot](https://i.postimg.cc/bw40gGg6/Screenshot-at-2025-08-16-19-15-46.png)
+![Quantd Linux Desktop](https://i.postimg.cc/SK86vytm/Screenshot-at-2025-08-16-19-16-26.png)
+![Quantd Linux Terminal](https://i.postimg.cc/Y02Q0Q2S/Screenshot-at-2025-08-16-19-25-53.png)
+![Quantd Linux System](https://i.postimg.cc/rmk16vvx/Screenshot-at-2025-08-16-19-26-32.png)
+![Quantd Linux Desktop2](https://i.postimg.cc/fLfxM8NF/Screenshot-at-2025-08-16-19-27-24.png)
 ## Download the ISO
 ### Latest
-[Release 2.0]()
+[Release 2.0](https://mega.nz/file/LOpCmAoQ#AYTKuvjWAMAPTIWWPCbhN0jcD3hhkxophx1vtxFOQb4)
   
 ### Archives
 * [Release 1.0](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)
