@@ -2,13 +2,13 @@
 
 Quantd Linux is a custom Debian-based live desktop distribution built with [Debian Live Build](https://wiki.debian.org/DebianLive).  
 It uses the **MATE Desktop Environment**, **PipeWire** for audio, and includes **Bluetooth** support.  
-This project builds a bootable ISO based on **Debian 12 (Bookworm)** for general desktop users.
+This project builds a bootable ISO based on **Debian 13 (trixie)** for general desktop users.
 
 ---
 
 ## 🎯 Features
 
-- ✅ Debian 12 (Stable) Base  
+- ✅ Debian 13 (Stable) Base  
 - ✅ Full MATE Desktop Environment  
 - ✅ PipeWire as audio backend  
 - ✅ Bluetooth support (BlueZ + Blueman)  
@@ -19,13 +19,16 @@ This project builds a bootable ISO based on **Debian 12 (Bookworm)** for general
 
 ## 🏗️ Build Environment
 
-You can build Quantd Linux on any Debian-based system (like Debian, Ubuntu, or SparkyLinux).
+You can build Quantd Linux on any Debian-based system (like Debian, Ubuntu, etc).
 
 ### 🔧 Required Packages
 
 ```
 sudo apt update
-sudo apt install live-build git curl wget xorriso
+sudo apt update
+sudo apt install live-build debootstrap systemd-container \
+                 git wget curl ca-certificates \
+                 build-essential
 ```
 
 ---
@@ -54,7 +57,7 @@ Run this inside the `quantd-linux/` directory:
 
 ```
 lb config \
-  --distribution bookworm \
+  --distribution trixie \
   --debian-installer live \
   --archive-areas "main contrib non-free non-free-firmware" \
   --binary-images iso-hybrid \
@@ -112,6 +115,8 @@ remmina
 xrdp
 ftp
 tigervnc-viewer
+timeshift
+gparted
 
 # Network
 network-manager
@@ -135,9 +140,9 @@ config/includes.chroot/etc/apt/sources.list
 Paste:
 
 ```
-deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb http://security.debian.org/ bookworm-security main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb http://security.debian.org/ trixie-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
 ```
 
 ---
@@ -162,7 +167,7 @@ Contents:
 NAME="Quantd Linux"
 VERSION="1.0"
 ID=quantd
-PRETTY_NAME="Quantd Linux 1.0 (Bookworm)"
+PRETTY_NAME="Quantd Linux 1.0 (trixie)"
 HOME_URL="https://quantdlinux.example.com"
 SUPPORT_URL="https://quantdlinux.example.com/support"
 BUG_REPORT_URL="https://quantdlinux.example.com/bugs"
@@ -212,7 +217,7 @@ ln -s /lib/systemd/system/bluetooth.service config/includes.chroot/etc/systemd/s
 ```
 sudo lb clean
 
-lb config   --distribution bookworm   --debian-installer live   --archive-areas "main contrib non-free non-free-firmware"   --binary-images iso-hybrid   --mirror-bootstrap http://deb.debian.org/debian/   --mirror-binary http://deb.debian.org/debian/   --mirror-chroot http://deb.debian.org/debian/   --mirror-binary-security http://security.debian.org/   --mirror-chroot-security http://security.debian.org/   --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+lb config   --distribution trixie   --debian-installer live   --archive-areas "main contrib non-free non-free-firmware"   --binary-images iso-hybrid   --mirror-bootstrap http://deb.debian.org/debian/   --mirror-binary http://deb.debian.org/debian/   --mirror-chroot http://deb.debian.org/debian/   --mirror-binary-security http://security.debian.org/   --mirror-chroot-security http://security.debian.org/   --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
 
 sudo lb build
 ```

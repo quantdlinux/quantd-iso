@@ -40,3 +40,6 @@ network-manager-gnome
 # Essential tools
 sudo
 policykit-1
+calamares 
+calamares-settings-debian
+
