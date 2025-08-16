@@ -232,7 +232,7 @@ live-image-amd64.hybrid.iso
 
 ---
 ## 📷 Screenshots
-![Quantd Linux Boot](https://i.postimg.cc/bw40gGg6/Screenshot-at-2025-08-16-19-15-46.png)
+![Quantd Linux Boot](https://i.postimg.cc/FzVkzW82/Screenshot-at-2025-08-16-23-39-06.png)
 ![Quantd Linux Desktop](https://i.postimg.cc/SK86vytm/Screenshot-at-2025-08-16-19-16-26.png)
 ![Quantd Linux Terminal](https://i.postimg.cc/Y02Q0Q2S/Screenshot-at-2025-08-16-19-25-53.png)
 ![Quantd Linux System](https://i.postimg.cc/rmk16vvx/Screenshot-at-2025-08-16-19-26-32.png)
