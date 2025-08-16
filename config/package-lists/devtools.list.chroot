@@ -2,8 +2,6 @@
 build-essential
 git
 vim
-code-oss            # If available (alias for VS Code builds)
-sublime-text        # If repo is added
 curl
 wget
 htop
@@ -16,11 +14,9 @@ mercurial
 subversion
 
 # Build / Language Tools
-openjdk-17-jdk
 maven
 gradle
 npm
-yarn
 pipx
 golang
 python3
@@ -36,16 +32,12 @@ skopeo
 crun
 vagrant
 virt-manager
-qemu
 
 # API / Testing Tools
 httpie
 jq
-swagger-editor
-postman           # may need manual installation
 
 # Editors & IDEs
-code-oss
 vim
 neovim
 

@@ -1,0 +1,38 @@
+componentName:   quantd
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 800px,580px
+windowPlacement: center
+
+strings:
+    productName:         Quantd Linux
+    shortProductName:    Quantd
+    version:             2.0
+    shortVersion:        2.0
+    versionedName:       Quantd Linux 2.0
+    shortVersionedName:  Quantd 2.0
+    bootloaderEntryName: Quantd
+    productUrl:          https://quantdlinux.github.io/
+    supportUrl:          https://quantdlinux.github.io/support
+    knownIssuesUrl:      https://quantdlinux.github.io/issues
+    releaseNotesUrl:     https://quantdlinux.github.io/releases/2.0
+    donateUrl:           https://quantdlinux.github.io/donate
+
+sidebar: widget
+navigation: widget
+
+images:
+    productLogo:         "quantd-logo.png"
+    productIcon:         "quantd-logo.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+
+style:
+   SidebarBackground:    "#26475b"
+   SidebarText:          "#FFFFFF"
+   SidebarTextCurrent:   "#fbfbfb"
+   SidebarBackgroundCurrent: "#265370"
+
+slideshowAPI: 2
