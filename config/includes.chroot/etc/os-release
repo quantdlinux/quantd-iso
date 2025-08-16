@@ -1,0 +1,9 @@
+NAME="Quantd Linux"
+VERSION="2.0 (Trixie)"
+ID=quantd
+ID_LIKE=debian
+VERSION_ID="2.0"
+PRETTY_NAME="Quantd Linux 2.0 (based on Debian 13 'Trixie')"
+ANSI_COLOR="0;36"
+HOME_URL="https://quantdlinux.github.io/"
+BUG_REPORT_URL="https://quantdlinux.github.io/issues"

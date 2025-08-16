@@ -2,13 +2,13 @@
 
 Quantd Linux is a custom Debian-based live desktop distribution built with [Debian Live Build](https://wiki.debian.org/DebianLive).  
 It uses the **MATE Desktop Environment**, **PipeWire** for audio, and includes **Bluetooth** support.  
-This project builds a bootable ISO based on **Debian 12 (Bookworm)** for general desktop users.
+This project builds a bootable ISO based on **Debian 13 (trixie)** for general desktop users.
 
 ---
 
 ## 🎯 Features
 
-- ✅ Debian 12 (Stable) Base  
+- ✅ Debian 13 (Stable) Base  
 - ✅ Full MATE Desktop Environment  
 - ✅ PipeWire as audio backend  
 - ✅ Bluetooth support (BlueZ + Blueman)  
@@ -19,13 +19,16 @@ This project builds a bootable ISO based on **Debian 12 (Bookworm)** for general
 
 ## 🏗️ Build Environment
 
-You can build Quantd Linux on any Debian-based system (like Debian, Ubuntu, or SparkyLinux).
+You can build Quantd Linux on any Debian-based system (like Debian, Ubuntu, etc).
 
 ### 🔧 Required Packages
 
 ```
 sudo apt update
-sudo apt install live-build git curl wget xorriso
+sudo apt update
+sudo apt install live-build debootstrap systemd-container \
+                 git wget curl ca-certificates \
+                 build-essential
 ```
 
 ---
@@ -54,7 +57,7 @@ Run this inside the `quantd-linux/` directory:
 
 ```
 lb config \
-  --distribution bookworm \
+  --distribution trixie \
   --debian-installer live \
   --archive-areas "main contrib non-free non-free-firmware" \
   --binary-images iso-hybrid \
@@ -112,6 +115,8 @@ remmina
 xrdp
 ftp
 tigervnc-viewer
+timeshift
+gparted
 
 # Network
 network-manager
@@ -135,9 +140,9 @@ config/includes.chroot/etc/apt/sources.list
 Paste:
 
 ```
-deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb http://security.debian.org/ bookworm-security main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb http://security.debian.org/ trixie-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
 ```
 
 ---
@@ -160,12 +165,14 @@ Contents:
 
 ```
 NAME="Quantd Linux"
-VERSION="1.0"
+VERSION="2.0 (Trixie)"
 ID=quantd
-PRETTY_NAME="Quantd Linux 1.0 (Bookworm)"
-HOME_URL="https://quantdlinux.example.com"
-SUPPORT_URL="https://quantdlinux.example.com/support"
-BUG_REPORT_URL="https://quantdlinux.example.com/bugs"
+ID_LIKE=debian
+VERSION_ID="2.0"
+PRETTY_NAME="Quantd Linux 2.0 (based on Debian 13 'Trixie')"
+ANSI_COLOR="0;36"
+HOME_URL="https://quantdlinux.github.io/"
+BUG_REPORT_URL="https://quantdlinux.github.io/issues"
 ```
 
 ---
@@ -212,7 +219,7 @@ ln -s /lib/systemd/system/bluetooth.service config/includes.chroot/etc/systemd/s
 ```
 sudo lb clean
 
-lb config   --distribution bookworm   --debian-installer live   --archive-areas "main contrib non-free non-free-firmware"   --binary-images iso-hybrid   --mirror-bootstrap http://deb.debian.org/debian/   --mirror-binary http://deb.debian.org/debian/   --mirror-chroot http://deb.debian.org/debian/   --mirror-binary-security http://security.debian.org/   --mirror-chroot-security http://security.debian.org/   --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+lb config   --distribution trixie   --debian-installer live   --archive-areas "main contrib non-free non-free-firmware"   --binary-images iso-hybrid   --mirror-bootstrap http://deb.debian.org/debian/   --mirror-binary http://deb.debian.org/debian/   --mirror-chroot http://deb.debian.org/debian/   --mirror-binary-security http://security.debian.org/   --mirror-chroot-security http://security.debian.org/   --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
 
 sudo lb build
 ```
@@ -225,15 +232,18 @@ live-image-amd64.hybrid.iso
 
 ---
 ## 📷 Screenshots
-![Quantd Linux Boot](https://i.postimg.cc/V67zCxkk/Screenshot-at-2025-08-08-12-03-37.png)
-![Quantd Linux Desktop](https://i.postimg.cc/sgBGDJKW/Screenshot-at-2025-08-08-12-11-49.png)
-![Quantd Linux Terminal](https://i.postimg.cc/Kz5Rspc6/Screenshot-at-2025-08-08-12-11-08.png)
-![Quantd Linux System](https://i.postimg.cc/cCb1VVpb/Screenshot-at-2025-08-08-12-09-55.png)
+![Quantd Linux Boot](https://i.postimg.cc/bw40gGg6/Screenshot-at-2025-08-16-19-15-46.png)
+![Quantd Linux Desktop](https://i.postimg.cc/SK86vytm/Screenshot-at-2025-08-16-19-16-26.png)
+![Quantd Linux Terminal](https://i.postimg.cc/Y02Q0Q2S/Screenshot-at-2025-08-16-19-25-53.png)
+![Quantd Linux System](https://i.postimg.cc/rmk16vvx/Screenshot-at-2025-08-16-19-26-32.png)
+![Quantd Linux Desktop2](https://i.postimg.cc/fLfxM8NF/Screenshot-at-2025-08-16-19-27-24.png)
 ## Download the ISO
 ### Latest
-[20250807](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)  
+[Release 2.0](https://mega.nz/file/LOpCmAoQ#AYTKuvjWAMAPTIWWPCbhN0jcD3hhkxophx1vtxFOQb4)
+  
 ### Archives
-1. [20250805](https://archive.org/download/live-image-amd64.hybrid_202508/live-image-amd64.hybrid.iso)
+* [Release 1.0](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)
+* [20250805](https://archive.org/download/live-image-amd64.hybrid_202508/live-image-amd64.hybrid.iso)
 
 ## 🧪 Test the ISO
 

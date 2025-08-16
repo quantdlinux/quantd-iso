@@ -32,6 +32,9 @@ remmina
 xrdp
 ftp
 tigervnc-viewer
+timeshift
+qemu-system-x86 
+qemu-utils
 
 # Network
 network-manager
@@ -39,4 +42,6 @@ network-manager-gnome
 
 # Essential tools
 sudo
-policykit-1
+calamares 
+calamares-settings-debian
+
