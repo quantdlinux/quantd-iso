@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+# Copy Quantd branding into boot directories
+cp /usr/share/quantd-branding/isolinux/* config/includes.binary/isolinux/ || true
+cp /usr/share/quantd-branding/grub/* config/includes.binary/boot/grub/ || true
+
