@@ -24,6 +24,7 @@ python3-pip
 nodejs
 npm
 rust-all
+default-jdk
 
 # Containers / Dev Environments
 podman
@@ -40,13 +41,15 @@ jq
 # Editors & IDEs
 vim
 neovim
+emacs
+mc
 
 # Documentation / Visual
 graphviz
 
 # Build tools
 maven
-gradle
+# gradle
 cmake
 make
 live-build 
