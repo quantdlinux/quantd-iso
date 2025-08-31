@@ -17,7 +17,7 @@ blueman
 bluez-tools
 
 # Display/login manager
-sddm
+lightdm
 
 # Useful desktop apps
 firefox-esr
