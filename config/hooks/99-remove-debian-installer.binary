@@ -1,3 +1,0 @@
-#!/bin/sh
-rm -f binary/live/filesystem.squashfs/usr/share/applications/debian-installer.desktop
-rm -f binary/live/filesystem.squashfs/usr/share/applications/live-installer.desktop

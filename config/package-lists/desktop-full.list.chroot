@@ -17,7 +17,7 @@ blueman
 bluez-tools
 
 # Display/login manager
-lightdm
+sddm
 
 # Useful desktop apps
 firefox-esr
@@ -36,6 +36,7 @@ qemu-system-x86
 qemu-utils
 virt-manager
 gimp
+audacity
 
 # Network
 network-manager
