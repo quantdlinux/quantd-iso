@@ -36,6 +36,7 @@ qemu-system-x86
 qemu-utils
 virt-manager
 gimp
+audacity
 
 # Network
 network-manager

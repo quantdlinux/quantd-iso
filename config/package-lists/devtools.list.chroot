@@ -43,6 +43,7 @@ vim
 neovim
 emacs
 mc
+gedit
 
 # Documentation / Visual
 graphviz
