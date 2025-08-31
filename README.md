@@ -239,10 +239,10 @@ live-image-amd64.hybrid.iso
 ![Quantd Linux Installer](https://i.postimg.cc/GmfwkRyd/Screenshot-at-2025-08-17-21-56-06.png)
 ## Download the ISO
 ### Latest
-[Release 2.0](https://archive.org/download/quantd-live-image-amd64.hybrid.0817.125/quantd-live-image-amd64.hybrid.0817.125.iso)
+[Release 2.0](https://archive.org/download/quantd-live-image-amd64.hybrid.v2/quantd-live-image-amd64.hybrid.v2.iso)
   
 ### Archives
-* [Release 2.0](https://archive.org/download/quantd-live-image-amd64.hybrid.0817.125/quantd-live-image-amd64.hybrid.0817.125.iso)
+* [Release 2.0](https://archive.org/download/quantd-live-image-amd64.hybrid.v2/quantd-live-image-amd64.hybrid.v2.iso)
 * [Release 1.0](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)
 
 ## 🧪 Test the ISO
