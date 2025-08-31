@@ -15,7 +15,7 @@ subversion
 
 # Build / Language Tools
 maven
-gradle
+#gradle
 npm
 pipx
 golang
