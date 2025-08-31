@@ -33,6 +33,8 @@ skopeo
 crun
 vagrant
 virt-manager
+qemu-system
+qemu-utils
 
 # API / Testing Tools
 httpie
@@ -62,3 +64,4 @@ xorriso
 tigervnc-standalone-server
 tigervnc-viewer
 openssh-server
+openconnect

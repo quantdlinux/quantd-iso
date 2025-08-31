@@ -101,7 +101,7 @@ blueman
 bluez-tools
 
 # Display/login manager
-lightdm
+sddm
 
 # Useful desktop apps
 firefox-esr
@@ -239,12 +239,11 @@ live-image-amd64.hybrid.iso
 ![Quantd Linux Installer](https://i.postimg.cc/GmfwkRyd/Screenshot-at-2025-08-17-21-56-06.png)
 ## Download the ISO
 ### Latest
-[08172025](https://mega.nz/file/fWJRDaha#2LrGFVZyT8CjbYrfWeVh5_NRSjs8KVF6ltnFLR3ucAg)
+[Release 2.0](https://archive.org/download/quantd-live-image-amd64.hybrid.0817.125/quantd-live-image-amd64.hybrid.0817.125.iso)
   
 ### Archives
-* [Release 2.0](https://mega.nz/file/LOpCmAoQ#AYTKuvjWAMAPTIWWPCbhN0jcD3hhkxophx1vtxFOQb4)
+* [Release 2.0](https://archive.org/download/quantd-live-image-amd64.hybrid.0817.125/quantd-live-image-amd64.hybrid.0817.125.iso)
 * [Release 1.0](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)
-* [20250805](https://archive.org/download/live-image-amd64.hybrid_202508/live-image-amd64.hybrid.iso)
 
 ## 🧪 Test the ISO
 
