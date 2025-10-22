@@ -23,8 +23,7 @@ You can build Quantd Linux on any Debian-based system (like Debian, Ubuntu, etc)
 
 ### 🔧 Required Packages
 
-```
-sudo apt update
+```bash
 sudo apt update
 sudo apt install live-build debootstrap systemd-container \
                  git wget curl ca-certificates \
@@ -36,7 +35,7 @@ sudo apt install live-build debootstrap systemd-container \
 ## 📁 Project Structure
 
 ```
-quantd-linux/
+quantd-iso/
 ├── config/
 │   ├── package-lists/
 │   │   └── desktop-full.list.chroot
@@ -53,9 +52,9 @@ quantd-linux/
 
 ## ⚙️ Build Configuration
 
-Run this inside the `quantd-linux/` directory:
+Run this inside the `quantd-iso/` directory:
 
-```
+```bash
 lb config \
   --distribution trixie \
   --debian-installer live \
