@@ -1,0 +1,14 @@
+# config/includes.chroot/etc/systemd/system/create-persistence.service
+[Unit]
+Description=Create loopback persistence file on removable medium (one-shot)
+After=local-fs.target
+ConditionPathExists=/lib/live/mount/medium
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/create-persistence.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
+

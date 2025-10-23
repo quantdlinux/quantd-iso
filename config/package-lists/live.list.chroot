@@ -1,5 +1,8 @@
 live-boot
 live-config
 live-config-systemd
-systemd-sysv
 live-tools
+rsync
+sudo
+parted
+e2fsprogs

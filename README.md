@@ -65,7 +65,8 @@ lb config \
   --mirror-chroot http://deb.debian.org/debian/ \
   --mirror-binary-security http://security.debian.org/ \
   --mirror-chroot-security http://security.debian.org/ \
-  --bootappend-live "boot=live components quiet splash persistence persistence-label=persistence hostname=quantd user=quantd"
+  --bootappend-live "boot=live components quiet splash persistence persistence-label=persistence hostname=quantd user=quantd" #\
+  #--apt-http-proxy="http://www-proxy.us.oracle.com:80"
 ```
 
 ---
