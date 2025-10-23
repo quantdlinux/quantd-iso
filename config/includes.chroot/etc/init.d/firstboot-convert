@@ -1,0 +1,101 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          firstboot-convert
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Convert dd'd USB into writable drive and create persistence
+### END INIT INFO
+
+LOG=/var/log/firstboot-convert.log
+exec > "${LOG}" 2>&1
+
+PFLAG="/var/lib/firstboot-convert-done"
+if [ -e "${PFLAG}" ]; then
+    echo "firstboot-convert: already run, exiting."
+    exit 0
+fi
+
+echo "firstboot-convert: start $(date)"
+
+# Determine the live medium mount
+ISO_MNT="/cdrom"
+if ! mountpoint -q "${ISO_MNT}"; then
+    if mountpoint -q /run/live/medium; then
+        ISO_MNT="/run/live/medium"
+    else
+        echo "Cannot find live medium"
+        exit 1
+    fi
+fi
+
+# Detect underlying USB device
+ISO_DEV_PART=$(df --output=source "${ISO_MNT}" | tail -1)
+USB_DEV=$(echo "${ISO_DEV_PART}" | sed -E 's/p?[0-9]+$//')
+echo "ISO mounted from ${ISO_DEV_PART}, device ${USB_DEV}"
+
+# Compute sizes
+dev_size_bytes=$(blockdev --getsize64 "${USB_DEV}")
+part_size_bytes=$(blockdev --getsize64 "${ISO_DEV_PART}")
+
+if [ "${dev_size_bytes}" -gt "${part_size_bytes}" ]; then
+    echo "Free space detected: creating ext4 partition for U2 persistence"
+
+    last_end_mib=$(parted -s "${USB_DEV}" unit MiB print | awk '/^ /{p=$2} END{print p}' | sed 's/MiB//')
+    start_mib=$(( ${last_end_mib%.*} + 1 ))
+    efi_end_mib=$(( start_mib + 512 ))
+    root_start_mib=$(( efi_end_mib + 1 ))
+
+    parted -s "${USB_DEV}" mkpart primary fat32 "${start_mib}MiB" "${efi_end_mib}MiB"
+    parted -s "${USB_DEV}" mkpart primary ext4 "${root_start_mib}MiB" 100%
+    parted -s "${USB_DEV}" set 1 boot on || true
+
+    partprobe "${USB_DEV}" || true
+    sleep 1
+
+    # Determine partitions
+    parts=( $(ls ${USB_DEV}?* 2>/dev/null || ls ${USB_DEV}p* 2>/dev/null) )
+    NEW_EFI="${parts[-2]}"
+    NEW_ROOT="${parts[-1]}"
+
+    mkfs.vfat -n EFI "${NEW_EFI}"
+    mkfs.ext4 -F -L persistence "${NEW_ROOT}"
+
+    mkdir -p /mnt/newroot
+    mount "${NEW_ROOT}" /mnt/newroot
+    rsync -aHAX --numeric-ids "${ISO_MNT}/" /mnt/newroot/
+
+    mkdir -p /mnt/newroot/boot/efi
+    mount "${NEW_EFI}" /mnt/newroot/boot/efi
+
+    grub-install --target=i386-pc --boot-directory=/mnt/newroot/boot "${USB_DEV}" || true
+    grub-install --target=x86_64-efi --efi-directory=/mnt/newroot/boot/efi --boot-directory=/mnt/newroot/boot --removable || true
+
+    touch "${PFLAG}"
+    sync
+    umount /mnt/newroot/boot/efi
+    umount /mnt/newroot
+    echo "Conversion done, rebooting..."
+    reboot
+else
+    echo "No free space: fallback to loopback persistence"
+
+    PERSIST_FILE="${ISO_MNT}/persistence.img"
+    avail_kib=$(df --output=avail "${ISO_MNT}" | tail -1)
+    avail_mb=$(( (avail_kib / 1024) - 100 ))
+    [ "$avail_mb" -lt 2048 ] && avail_mb=2048
+    dd if=/dev/zero of="$PERSIST_FILE" bs=1M count=0 seek="$avail_mb"
+    mkfs.ext4 -F -L persistence "$PERSIST_FILE"
+
+    TMPMNT=$(mktemp -d)
+    mount -o loop "$PERSIST_FILE" "$TMPMNT"
+    echo "/ union" > "$TMPMNT/persistence.conf"
+    umount "$TMPMNT"
+    rmdir "$TMPMNT"
+
+    touch "${PFLAG}"
+    sync
+    reboot
+fi
+

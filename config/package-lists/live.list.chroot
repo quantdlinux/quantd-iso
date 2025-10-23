@@ -6,3 +6,7 @@ rsync
 sudo
 parted
 e2fsprogs
+dosfstools
+rsync
+grub-efi-amd64
+util-linux
