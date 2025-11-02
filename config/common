@@ -7,7 +7,7 @@ LB_CONFIGURATION_VERSION="20230502"
 LB_APT="apt"
 
 # Set proxy for HTTP connections
-LB_APT_HTTP_PROXY="http://127.0.0.1:3142/"
+LB_APT_HTTP_PROXY=""
 
 # Set apt/aptitude pipeline depth
 LB_APT_PIPELINE=""
