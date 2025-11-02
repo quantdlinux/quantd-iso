@@ -1,0 +1,4 @@
+#!/bin/sh
+# Disable valid-until check for snapshot repositories
+echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99-ignore-valid-until
+

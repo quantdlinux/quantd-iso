@@ -61,12 +61,13 @@ lb config \
   --debian-installer live \
   --archive-areas "main contrib non-free non-free-firmware" \
   --binary-images iso-hybrid \
-  --mirror-bootstrap http://deb.debian.org/debian/ \
-  --mirror-binary http://deb.debian.org/debian/ \
-  --mirror-chroot http://deb.debian.org/debian/ \
-  --mirror-binary-security http://security.debian.org/ \
-  --mirror-chroot-security http://security.debian.org/ \
-  --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+  --mirror-bootstrap http://snapshot.debian.org/archive/debian/20250601T000000Z/ \
+  --mirror-binary http://snapshot.debian.org/archive/debian/20250601T000000Z/ \
+  --mirror-chroot http://snapshot.debian.org/archive/debian/20250601T000000Z/ \
+  --mirror-binary-security http://snapshot.debian.org/archive/debian-security/20250601T000000Z/ \
+  --mirror-chroot-security http://snapshot.debian.org/archive/debian-security/20250601T000000Z/ \
+  --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd" \
+  --apt-options "--allow-unauthenticated"
 ```
 
 ---
@@ -219,7 +220,18 @@ ln -s /lib/systemd/system/bluetooth.service config/includes.chroot/etc/systemd/s
 ```
 sudo lb clean
 
-lb config   --distribution trixie   --debian-installer live   --archive-areas "main contrib non-free non-free-firmware"   --binary-images iso-hybrid   --mirror-bootstrap http://deb.debian.org/debian/   --mirror-binary http://deb.debian.org/debian/   --mirror-chroot http://deb.debian.org/debian/   --mirror-binary-security http://security.debian.org/   --mirror-chroot-security http://security.debian.org/   --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+lb config \
+  --distribution trixie \
+  --debian-installer live \
+  --archive-areas "main contrib non-free non-free-firmware" \
+  --binary-images iso-hybrid \
+  --mirror-bootstrap http://snapshot.debian.org/archive/debian/20250601T000000Z/ \
+  --mirror-binary http://snapshot.debian.org/archive/debian/20250601T000000Z/ \
+  --mirror-chroot http://snapshot.debian.org/archive/debian/20250601T000000Z/ \
+  --mirror-binary-security http://snapshot.debian.org/archive/debian-security/20250601T000000Z/ \
+  --mirror-chroot-security http://snapshot.debian.org/archive/debian-security/20250601T000000Z/ \
+  --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd" \
+  --apt-options "--allow-unauthenticated"
 
 sudo lb build
 ```

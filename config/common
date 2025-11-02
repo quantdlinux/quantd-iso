@@ -1,13 +1,13 @@
 # config/common - common options for live-build(7)
 
 # Version of live-build used to build config (config format version)
-LB_CONFIGURATION_VERSION="20230502"
+LB_CONFIGURATION_VERSION="20250505+deb13u1"
 
 # Set package manager
 LB_APT="apt"
 
 # Set proxy for HTTP connections
-LB_APT_HTTP_PROXY="http://127.0.0.1:3142/"
+LB_APT_HTTP_PROXY=""
 
 # Set apt/aptitude pipeline depth
 LB_APT_PIPELINE=""
@@ -58,7 +58,7 @@ LB_SYSTEM="live"
 LB_IMAGE_NAME="live-image"
 
 # Set options to use with apt
-APT_OPTIONS="--yes -o Acquire::Retries=5"
+APT_OPTIONS="--allow-unauthenticated"
 
 # Set options to use with aptitude
 APTITUDE_OPTIONS="--assume-yes -o Acquire::Retries=5"
