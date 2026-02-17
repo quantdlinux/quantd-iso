@@ -2,7 +2,7 @@
 
 Quantd Linux is a custom Debian-based live desktop distribution built with [Debian Live Build](https://wiki.debian.org/DebianLive).  
 It uses the **MATE Desktop Environment**, **PipeWire** for audio, and includes **Bluetooth** support.  
-This project builds a bootable ISO based on **Debian 13 (Trixie)** for general desktop users.
+This project builds a bootable ISO based on **Debian 13 (trixie)** for general desktop users.
 
 ---
 
@@ -19,13 +19,16 @@ This project builds a bootable ISO based on **Debian 13 (Trixie)** for general d
 
 ## 🏗️ Build Environment
 
-You can build Quantd Linux on any Debian-based system (like Debian, Ubuntu, or SparkyLinux).
+You can build Quantd Linux on any Debian-based system (like Debian, Ubuntu, etc).
 
 ### 🔧 Required Packages
 
 ```
 sudo apt update
-sudo apt install live-build git curl wget xorriso
+sudo apt update
+sudo apt install live-build debootstrap systemd-container \
+                 git wget curl ca-certificates \
+                 build-essential
 ```
 
 ---
@@ -98,7 +101,7 @@ blueman
 bluez-tools
 
 # Display/login manager
-lightdm
+sddm
 
 # Useful desktop apps
 firefox-esr
@@ -112,6 +115,8 @@ remmina
 xrdp
 ftp
 tigervnc-viewer
+timeshift
+gparted
 
 # Network
 network-manager
@@ -160,12 +165,14 @@ Contents:
 
 ```
 NAME="Quantd Linux"
-VERSION="1.0"
+VERSION="2.0 (Trixie)"
 ID=quantd
-PRETTY_NAME="Quantd Linux 1.0 (Trixie)"
-HOME_URL="https://quantdlinux.example.com"
-SUPPORT_URL="https://quantdlinux.example.com/support"
-BUG_REPORT_URL="https://quantdlinux.example.com/bugs"
+ID_LIKE=debian
+VERSION_ID="2.0"
+PRETTY_NAME="Quantd Linux 2.0 (based on Debian 13 'Trixie')"
+ANSI_COLOR="0;36"
+HOME_URL="https://quantdlinux.github.io/"
+BUG_REPORT_URL="https://quantdlinux.github.io/issues"
 ```
 
 ---
@@ -225,15 +232,18 @@ live-image-amd64.hybrid.iso
 
 ---
 ## 📷 Screenshots
-![Quantd Linux Boot](https://i.postimg.cc/V67zCxkk/Screenshot-at-2025-08-08-12-03-37.png)
-![Quantd Linux Desktop](https://i.postimg.cc/sgBGDJKW/Screenshot-at-2025-08-08-12-11-49.png)
-![Quantd Linux Terminal](https://i.postimg.cc/Kz5Rspc6/Screenshot-at-2025-08-08-12-11-08.png)
-![Quantd Linux System](https://i.postimg.cc/cCb1VVpb/Screenshot-at-2025-08-08-12-09-55.png)
+![Quantd Linux Boot](https://i.postimg.cc/FzVkzW82/Screenshot-at-2025-08-16-23-39-06.png)
+![Quantd Linux Desktop](https://i.postimg.cc/SK86vytm/Screenshot-at-2025-08-16-19-16-26.png)
+![Quantd Linux Terminal](https://i.postimg.cc/wj25PxVY/Screenshot-at-2025-08-17-22-04-25.png)
+![Quantd Linux System](https://i.postimg.cc/wTKkRGvZ/Screenshot-at-2025-08-17-22-04-53.png)
+![Quantd Linux Installer](https://i.postimg.cc/GmfwkRyd/Screenshot-at-2025-08-17-21-56-06.png)
 ## Download the ISO
 ### Latest
-[20250807](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)  
+
+[Release 2.0]()
+  
 ### Archives
-1. [20250805](https://archive.org/download/live-image-amd64.hybrid_202508/live-image-amd64.hybrid.iso)
+* [Release 1.0](https://archive.org/download/quantd-live-image-amd64.hybrid/quantd-live-image-amd64.hybrid.iso)
 
 ## 🧪 Test the ISO
 

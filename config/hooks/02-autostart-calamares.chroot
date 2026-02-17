@@ -1,0 +1,4 @@
+#!/bin/sh
+if grep -q "autostart-calamares" /proc/cmdline; then
+  /usr/bin/calamares
+fi

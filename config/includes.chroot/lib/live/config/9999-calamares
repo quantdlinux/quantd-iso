@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+CMDLINE="$(cat /proc/cmdline)"
+LIVEUSER="user"   # change to your live username if different
+
+if echo "$CMDLINE" | grep -qw "autostart-calamares"; then
+    echo "[live-config] Autostarting Calamares installer..."
+    # Use Debian’s Calamares .desktop entry so branding + configs are applied
+    sudo -u $LIVEUSER gtk-launch calamares.desktop &
+fi

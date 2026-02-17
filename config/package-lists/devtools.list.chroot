@@ -1,0 +1,67 @@
+# Development Essentials
+build-essential
+git
+vim
+curl
+wget
+htop
+
+# Version Control Helpers
+git-extras
+pre-commit
+git
+mercurial
+subversion
+
+# Build / Language Tools
+maven
+#gradle
+npm
+pipx
+golang
+python3
+python3-pip
+nodejs
+npm
+rust-all
+default-jdk
+
+# Containers / Dev Environments
+podman
+buildah
+skopeo
+crun
+vagrant
+virt-manager
+qemu-system
+qemu-utils
+
+# API / Testing Tools
+httpie
+jq
+
+# Editors & IDEs
+vim
+neovim
+emacs
+mc
+gedit
+
+# Documentation / Visual
+graphviz
+
+# Build tools
+maven
+# gradle
+cmake
+make
+live-build 
+curl 
+wget 
+xorriso
+
+# Networking / remote dev
+tigervnc-standalone-server
+tigervnc-viewer
+openssh-server
+openconnect

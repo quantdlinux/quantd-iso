@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Install Quantd Linux
+GenericName=Installer
+Comment=Install Quantd Linux to your system
+Exec=calamares
+Icon=calamares
+Terminal=false
+Categories=System;Installer;
+StartupNotify=true

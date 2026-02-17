@@ -1,7 +1,7 @@
 # Full MATE Desktop
 task-mate-desktop
 mate-desktop-environment
-mate-desktop-environment-extras
+# mate-desktop-environment-extras
 
 # PipeWire for audio
 pipewire
@@ -15,7 +15,6 @@ bluez
 bluetooth
 blueman
 bluez-tools
-#pulseaudio-module-bluetooth
 
 # Display/login manager
 lightdm
@@ -32,6 +31,12 @@ remmina
 xrdp
 ftp
 tigervnc-viewer
+timeshift
+qemu-system-x86 
+qemu-utils
+virt-manager
+gimp
+audacity
 
 # Network
 network-manager
@@ -39,4 +44,9 @@ network-manager-gnome
 
 # Essential tools
 sudo
-polkitd
+plymouth 
+plymouth-themes
+firmware-linux-nonfree
+calamares
+calamares-settings-debian
+
