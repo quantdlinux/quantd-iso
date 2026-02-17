@@ -39,4 +39,4 @@ network-manager-gnome
 
 # Essential tools
 sudo
-policykit-1
+polkitd
