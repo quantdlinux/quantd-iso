@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 QuantD Cloud Native Linux Project
+
 # config/chroot - options for live-build(7), chroot stage
 
 # Set chroot filesystem
