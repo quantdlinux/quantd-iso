@@ -8,3 +8,8 @@ gradle
 ansible
 ansible-lint
 yamllint
+
+# Kubernetes tools
+kubectl
+kustomize
+kind
