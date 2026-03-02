@@ -6,7 +6,17 @@ mate-desktop-environment-core
 lightdm
 network-manager
 network-manager-gnome
+mate-terminal
+mate-control-center
 
 # Basic utilities
 file-roller
 gparted
+
+# Essential GUI Layer
+xorg-core
+xserver-xorg-video-all
+xserver-xorg-input-all
+xinit
+dbus-x11
+
