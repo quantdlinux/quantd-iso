@@ -20,3 +20,10 @@ skopeo
 podman
 runc
 containernetworking-plugins
+
+# Basic utilities
+file-roller
+gparted
+yq
+shellcheck
+direnv

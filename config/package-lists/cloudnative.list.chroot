@@ -1,5 +1,2 @@
 # DevOps CLI tools
 jq
-yq
-shellcheck
-direnv
