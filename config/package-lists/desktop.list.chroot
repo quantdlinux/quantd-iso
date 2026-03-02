@@ -3,9 +3,9 @@
 
 
 # Audio & Bluetooth (Consolidated)
-pipewire
-pipewire-audio
-pipewire-pulse
+#pipewire
+#pipewire-audio
+#pipewire-pulse
 #wireplumber
 #bluez
 #bluetooth
@@ -16,4 +16,4 @@ pipewire-pulse
 
 # Browser Swap (Crucial for 200MB+ savings)
 # firefox-esr  <-- Remove this
-falkon
+#falkon

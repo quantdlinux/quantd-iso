@@ -10,8 +10,8 @@ lightdm
 # MATE Minimal
 mate-desktop-environment-core
 mate-terminal
-mate-control-center
-mate-notification-daemon
+#mate-control-center
+#mate-notification-daemon
 
 # Networking & Utils
 network-manager-gnome
