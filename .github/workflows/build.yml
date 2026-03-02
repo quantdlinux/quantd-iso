@@ -12,42 +12,57 @@ jobs:
   build:
     runs-on: ubuntu-22.04
 
-    container:
-      image: debian:trixie
-      options: --privileged
-
     steps:
+      # Step 1: Clean the HOST runner before starting the build
+      - name: Maximize Runner Disk Space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo docker image prune -af
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      # Step 2: Run the build inside the Debian Trixie container with Privileged mode
+      - name: Build ISO in Debian Trixie
         run: |
-          apt update
-          apt install -y \
-            git live-build debootstrap squashfs-tools xorriso \
-            grub-pc-bin grub-efi-amd64-bin mtools dosfstools \
-            syslinux-utils curl wget ca-certificates
+          docker run --privileged -v $(pwd):/build -w /build debian:trixie /bin/bash -c "
+            apt update && 
+            apt install -y git live-build debootstrap squashfs-tools xorriso \
+                           grub-pc-bin grub-efi-amd64-bin mtools dosfstools \
+                           syslinux-utils curl wget ca-certificates &&
+            
+            # Injection: Ensure GUI engine is present (if missing from repo)
+            mkdir -p config/package-lists &&
+            echo 'xorg xinit dbus-x11 lightdm mate-desktop-environment-core' > config/package-lists/gui-fix.list.chroot &&
 
-      - name: Clean previous build
-        run: lb clean --purge || true
+            # Injection: Final space-saving hook
+            mkdir -p config/hooks/live &&
+            cat <<EOF > config/hooks/live/0999-clear-cache.chroot
+            #!/bin/sh
+            apt-get clean
+            rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/info/*
+            EOF
+            chmod +x config/hooks/live/0999-clear-cache.chroot
 
-      - name: Configure live-build
-        run: |
-          lb config \
-            --distribution trixie \
-            --debian-installer live \
-            --archive-areas "main contrib non-free non-free-firmware" \
-            --binary-images iso-hybrid \
-            --mirror-bootstrap http://deb.debian.org/debian/ \
-            --mirror-binary http://deb.debian.org/debian/ \
-            --mirror-chroot http://deb.debian.org/debian/ \
-            --compression xz \
-            --apt-recommends true \
-            --zlib-level 9 \
-            --bootappend-live "boot=live components quiet splash hostname=quantd username=quantd live-config.user-default-groups=sudo,audio,video,cdrom,netdev"
-
-      - name: Build ISO
-        run: lb build
+            lb clean --purge &&
+            lb config \
+              --distribution trixie \
+              --debian-installer live \
+              --archive-areas 'main contrib non-free non-free-firmware' \
+              --binary-images iso-hybrid \
+              --mirror-bootstrap http://deb.debian.org/debian/ \
+              --mirror-binary http://deb.debian.org/debian/ \
+              --mirror-chroot http://deb.debian.org/debian/ \
+              --compression xz \
+              --apt-recommends true \
+              --apt-indices false \
+              --bootappend-live 'boot=live components quiet splash hostname=quantd username=quantd' &&
+            
+            lb build
+          "
 
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v4
