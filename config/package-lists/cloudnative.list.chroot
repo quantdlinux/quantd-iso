@@ -1,3 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2026 QuantD Cloud Native Linux Project
+
 # DevOps CLI tools
+cockpit
+cockpit-podman
+podman
+runc
+containernetworking-plugins
