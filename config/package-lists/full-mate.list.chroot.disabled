@@ -1,0 +1,7 @@
+# Full MATE experience
+task-mate-desktop
+mate-desktop-environment
+mate-desktop-environment-extras
+
+# Browser
+firefox-esr

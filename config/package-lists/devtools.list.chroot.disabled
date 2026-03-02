@@ -1,0 +1,31 @@
+# Programming toolchains
+golang-go
+default-jdk
+maven
+gradle
+
+# Config management
+ansible
+ansible-lint
+yamllint
+
+# Kubernetes tools
+kubectl
+kustomize
+kind
+buildah
+skopeo
+
+# Container runtime (choose one stack)
+podman
+runc
+containernetworking-plugins
+
+# Basic utilities
+file-roller
+gparted
+yq
+shellcheck
+direnv
+zenity
+jq

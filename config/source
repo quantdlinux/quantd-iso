@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0
-# Copyright 2026 QuantD Cloud Native Linux Project
-
 # config/source - options for live-build(7), source stage
 
 # Set source option

@@ -1,0 +1,11 @@
+[Unit]
+Description=QuantD First Boot Profile Selector
+After=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/quantd-firstboot
+RemainAfterExit=true
+
+[Install]
+WantedBy=graphical.target

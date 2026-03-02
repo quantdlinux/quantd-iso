@@ -1,9 +1,4 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2026 QuantD Cloud Native Linux Project
+# Audio
 
-live-boot
-live-config
-live-config-systemd
-systemd-sysv
-calamares
-calamares-settings-debian

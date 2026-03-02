@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+CHOICE=$(zenity --list \
+  --title="QuantD Profile Setup" \
+  --text="Select your development profile:" \
+  --column="Profile" \
+  "Minimal (No Extra Tools)" \
+  "Developer Tools" \
+  "Full Desktop + Dev Tools" \
+  "Virtualization Stack")
+
+if [ -z "$CHOICE" ]; then
+  exit 0
+fi
+
+case "$CHOICE" in
+  "Developer Tools")
+    sudo apt update
+    sudo apt install -y golang-go default-jdk maven gradle ansible ansible-lint yamllint
+    ;;
+  "Full Desktop + Dev Tools")
+    sudo apt update
+    sudo apt install -y \
+      golang-go default-jdk maven gradle \
+      vlc gimp task-mate-desktop \
+      ansible ansible-lint yamllint
+    ;;
+  "Virtualization Stack")
+    sudo apt update
+    sudo apt install -y vagrant qemu-system
+    ;;
+esac
+
+zenity --info --text="Profile installation complete. Please reboot."
+
+sudo systemctl disable quantd-firstboot.service
