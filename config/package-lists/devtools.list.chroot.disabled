@@ -13,3 +13,5 @@ yamllint
 kubectl
 kustomize
 kind
+buildah
+skopeo

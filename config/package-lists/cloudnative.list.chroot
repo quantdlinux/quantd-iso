@@ -1,7 +1,5 @@
 # Container runtime (choose one stack)
 podman
-buildah
-skopeo
 runc
 containernetworking-plugins
 
