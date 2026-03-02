@@ -17,3 +17,7 @@ timeshift
 
 # Disk utilities
 gnome-disk-utility
+
+# Bluetooth
+bluez
+blueman

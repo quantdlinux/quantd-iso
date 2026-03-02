@@ -3,7 +3,3 @@ pipewire
 pipewire-audio
 pipewire-pulse
 wireplumber
-
-# Bluetooth
-bluez
-blueman

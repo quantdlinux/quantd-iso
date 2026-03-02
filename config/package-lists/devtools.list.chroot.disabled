@@ -28,3 +28,4 @@ yq
 shellcheck
 direnv
 zenity
+jq
