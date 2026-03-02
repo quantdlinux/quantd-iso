@@ -170,17 +170,18 @@ From the repository root:
 
 ```bash
 sudo lb clean --purge
-lb config \
-  --distribution trixie \
-  --debian-installer live \
-  --archive-areas "main contrib non-free non-free-firmware" \
-  --binary-images iso-hybrid \
-  --mirror-bootstrap http://deb.debian.org/debian/ \
-  --mirror-binary http://deb.debian.org/debian/ \
-  --mirror-chroot http://deb.debian.org/debian/ \
-  --mirror-binary-security http://security.debian.org/ \
-  --mirror-chroot-security http://security.debian.org/ \
-  --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"  
+          lb config \
+            --distribution trixie \
+            --debian-installer live \
+            --archive-areas "main contrib non-free non-free-firmware" \
+            --binary-images iso-hybrid \
+            --mirror-bootstrap http://deb.debian.org/debian/ \
+            --mirror-binary http://deb.debian.org/debian/ \
+            --mirror-chroot http://deb.debian.org/debian/ \
+            --compression xz \
+            --apt-recommends true \
+            --zlib-level 9 \
+            --bootappend-live "boot=live components quiet splash hostname=quantd username=quantd live-config.user-default-groups=sudo,audio,video,cdrom,netdev"
 sudo lb build
 ```
 
