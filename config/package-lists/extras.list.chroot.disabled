@@ -21,3 +21,8 @@ gnome-disk-utility
 # Bluetooth
 bluez
 blueman
+
+#Audio
+pipewire-audio
+pipewire-pulse
+wireplumber
