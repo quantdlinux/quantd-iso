@@ -1,5 +1,4 @@
-# Container runtime
-containerd
+# Container runtime (choose one stack)
 podman
 buildah
 skopeo
