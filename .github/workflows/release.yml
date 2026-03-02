@@ -44,36 +44,6 @@ jobs:
             --compression xz \
             --bootappend-live "boot=live components quiet splash hostname=quantd username=quantd"
 
-      # FIX 1: Ensure the ISO contains the tools to manage users and boot parameters
-      - name: Inject Essential Live Packages
-        run: |
-          mkdir -p config/package-lists
-          echo "live-boot live-config live-config-systemd sudo user-setup" > config/package-lists/live.list.chroot
-
-        # FIX 2: Create the hook to set the password to 'live'
-      - name: Cleanup and Setup Correct Hook
-        run: |
-            # Remove the broken hook if it exists in the repo
-            rm -f config/hooks/normal/0500-user-password.chroot || true
-            
-            # Create the correct directory and hook
-            mkdir -p config/hooks/live
-            cat <<EOF > config/hooks/live/0100-setup-user.chroot
-            #!/bin/sh
-            # Create user if it doesn't exist
-            if ! id "quantd" >/dev/null 2>&1; then
-                useradd -m -s /bin/bash quantd
-            fi
-            
-            # Set the password to 'live'
-            echo "quantd:live" | chpasswd
-            
-            # Add to sudo and groups
-            usermod -aG sudo,audio,video,cdrom,netdev quantd
-            EOF
-            
-            chmod +x config/hooks/live/0100-setup-user.chroot
-
       - name: Build ISO
         run: lb build
 
