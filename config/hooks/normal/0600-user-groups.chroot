@@ -1,0 +1,5 @@
+#!/bin/sh
+# Ensure the user exists before modifying (precautionary)
+if id "quantd" >/dev/null 2>&1; then
+    usermod -aG sudo,passwdqc,audio,video,cdrom,netdev quantd
+fi
