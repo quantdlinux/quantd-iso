@@ -23,6 +23,11 @@ bluez
 blueman
 
 #Audio
+pipewire
 pipewire-audio
 pipewire-pulse
 wireplumber
+
+# Essential system tools
+sudo
+polkitd

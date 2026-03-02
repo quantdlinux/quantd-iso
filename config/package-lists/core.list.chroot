@@ -3,7 +3,3 @@ mate-desktop-environment-core
 lightdm
 network-manager
 network-manager-gnome
-
-# Essential system tools
-sudo
-polkitd
