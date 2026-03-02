@@ -1,25 +1,20 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2026 QuantD Cloud Native Linux Project
 
-# Core Desktop
-#mate-desktop-environment-core
+# Essential Desktop Engine
+xorg
+xinit
+dbus-x11
 lightdm
-network-manager
-network-manager-gnome
-#mate-terminal
-#mate-control-center
 
-# Basic utilities
+# Minimal MATE Desktop (Saves ~600MB over task-mate-desktop)
+mate-desktop-environment-core
+mate-terminal
+mate-control-center
+mate-applets
+mate-notification-daemon
+
+# Networking & Utils
+network-manager-gnome
 file-roller
 gparted
-
-# Essential GUI Layer
-#xorg-core
-#xserver-xorg-video-all
-#xserver-xorg-input-all
-#xinit
-#dbus-x11
-task-mate-desktop
-mate-desktop-environment
-mate-desktop-environment-extras
-

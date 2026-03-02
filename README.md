@@ -169,6 +169,9 @@ sudo apt install -y live-build xorriso curl wget git
 From the repository root:
 
 ```bash
+# Set high-extreme compression for the squashfs
+export MKSQUASHFS_OPTIONS="-comp xz -Xbcj x86 -b 1M -Xdict-size 100%"
+
 sudo lb clean --purge
 lb config \
   --distribution trixie \

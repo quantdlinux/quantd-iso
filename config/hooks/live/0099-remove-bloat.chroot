@@ -1,0 +1,12 @@
+#!/bin/sh
+# Force remove heavy packages that often sneak in
+apt-get purge -y \
+    libreoffice* \
+    thunderbird* \
+    evolution* \
+    gnome-games* \
+    rhythmbox* \
+    shotwell* \
+    simple-scan
+
+apt-get autoremove --purge -y
