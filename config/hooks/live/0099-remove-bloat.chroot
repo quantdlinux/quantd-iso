@@ -9,4 +9,11 @@ apt-get purge -y \
     shotwell* \
     simple-scan
 
+# Remove non-essential firmware (Check your target hardware first!)
+# firmware-realtek, firmware-atheros, and firmware-amd-graphics are huge.
+apt-get purge -y \
+    firmware-amd-graphics \
+    firmware-nvidia-gsp-bin \
+    firmware-misc-nonfree
+    
 apt-get autoremove --purge -y
