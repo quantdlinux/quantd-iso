@@ -23,19 +23,12 @@ bluez-tools
 # Display/login manager
 lightdm
 
-# Useful desktop apps
+# Essential desktop tools
 firefox-esr
-vlc
-gimp
 file-roller
-meld
-ffmpeg
 gparted
-remmina
-xrdp
-ftp
-tigervnc-viewer
-cheese
+vlc
+meld
 
 # Network
 network-manager
@@ -45,31 +38,27 @@ network-manager-gnome
 sudo
 polkitd
 
-# Cloud-native: Kubernetes development and local testing
-kubectl
-kustomize
-kind
-
-# Cloud-native: container runtime experimentation
+# Container stack
 containerd
 podman
-podman-compose
 buildah
 skopeo
 runc
-crun
 containernetworking-plugins
 cockpit
 cockpit-podman
 
-# Cloud-native: platform engineering, DevOps, and IaC workflows
+# Kubernetes tooling
+kubectl
+kustomize
+kind
+
+# DevOps tooling
 ansible
-ansible-lint
 jq
 yq
-yamllint
 shellcheck
-terraform-switcher
+direnv
 
 # Cloud-native developer language/build toolchains
 golang-go
@@ -77,42 +66,19 @@ default-jdk
 maven
 gradle
 
-# Editors and IDE experience
-geany
+# Editors (minimal set)
+neovim
 kate
-neovim
-bluefish
-codeblocks
-emacs
-emacs-gtk
-gedit
-neovim
-notepadqq
-qtcreator
-vim-gtk3
-thonny
-codelite codelite-plugins
-bluefish 
-geany 
-qtcreator 
-lazarus 
-gambas3 
-eric 
+geany
 vim
-
-# Reproducible and isolated development environments
-direnv
-vagrant
-qemu-system
 
 #Pendrive boot creator
 gnome-disk-utility
-gnome-multi-writer
 
 #Backup
 timeshift
 
-#FileSystems
+# Filesystem support
 ntfs-3g
 exfatprogs
 dosfstools
