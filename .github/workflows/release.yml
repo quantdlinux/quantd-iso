@@ -1,25 +1,22 @@
-name: QuantD CI Build
+name: Build & Release QuantD ISO
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    tags:
+      - "v*"
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-22.04
+
+    permissions:
+      contents: write
 
     container:
       image: debian:trixie
       options: --privileged
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Install dependencies
         run: |
           apt update
@@ -37,6 +34,9 @@ jobs:
             curl \
             wget \
             ca-certificates
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Clean previous build
         run: |
@@ -59,8 +59,21 @@ jobs:
       - name: Build ISO
         run: lb build
 
-      - name: Upload ISO artifact
-        uses: actions/upload-artifact@v4
+      - name: Rename ISO
+        run: |
+          ISO_NAME="quantd-${GITHUB_REF_NAME}.iso"
+          mv *.iso "$ISO_NAME"
+          echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
+
+      - name: Generate SHA256
+        run: |
+          sha256sum "$ISO_NAME" > "$ISO_NAME.sha256"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: quantd-ci-build
-          path: "*.iso"
+          files: |
+            ${{ env.ISO_NAME }}
+            ${{ env.ISO_NAME }}.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
