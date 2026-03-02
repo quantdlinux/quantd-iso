@@ -1,0 +1,18 @@
+# Container runtime
+containerd
+podman
+buildah
+skopeo
+runc
+containernetworking-plugins
+
+# Kubernetes tools
+kubectl
+kustomize
+kind
+
+# DevOps CLI tools
+jq
+yq
+shellcheck
+direnv
