@@ -1,7 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2026 QuantD Cloud Native Linux Project
+
 # Core Desktop
 mate-desktop-environment-core
 lightdm
 network-manager
 network-manager-gnome
+
+# Essential system tools
+sudo
+polkitd

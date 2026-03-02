@@ -7,27 +7,5 @@ vlc
 gimp
 cheese
 
-# Web admin
-cockpit
-cockpit-podman
-
 # Backup
 timeshift
-
-
-# Disk utilities
-gnome-disk-utility
-
-# Bluetooth
-bluez
-blueman
-
-#Audio
-pipewire
-pipewire-audio
-pipewire-pulse
-wireplumber
-
-# Essential system tools
-sudo
-polkitd

@@ -16,11 +16,6 @@ kind
 buildah
 skopeo
 
-# Container runtime (choose one stack)
-podman
-runc
-containernetworking-plugins
-
 # Basic utilities
 file-roller
 gparted
