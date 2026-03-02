@@ -2,21 +2,24 @@
 # Copyright 2026 QuantD Cloud Native Linux Project
 
 # Core Desktop
-mate-desktop-environment-core
+#mate-desktop-environment-core
 lightdm
 network-manager
 network-manager-gnome
-mate-terminal
-mate-control-center
+#mate-terminal
+#mate-control-center
 
 # Basic utilities
 file-roller
 gparted
 
 # Essential GUI Layer
-xorg-core
-xserver-xorg-video-all
-xserver-xorg-input-all
-xinit
-dbus-x11
+#xorg-core
+#xserver-xorg-video-all
+#xserver-xorg-input-all
+#xinit
+#dbus-x11
+task-mate-desktop
+mate-desktop-environment
+mate-desktop-environment-extras
 
