@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-22.04
 
     permissions:
-          contents: write
-          
+      contents: write
+
     container:
       image: debian:trixie
       options: --privileged
