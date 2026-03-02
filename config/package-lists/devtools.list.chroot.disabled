@@ -15,3 +15,8 @@ kustomize
 kind
 buildah
 skopeo
+
+# Container runtime (choose one stack)
+podman
+runc
+containernetworking-plugins
