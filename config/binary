@@ -10,7 +10,7 @@ LB_BINARY_FILESYSTEM="fat32"
 LB_APT_INDICES="false"
 
 # Set boot parameters
-LB_BOOTAPPEND_LIVE="boot=live components quiet splash hostname=quantd user=quantd"
+LB_BOOTAPPEND_LIVE="boot=live components quiet splash hostname=quantd username=quantd live-config.user-default-groups=sudo,audio,video,cdrom,netdev"
 
 # Set boot parameters
 LB_BOOTAPPEND_INSTALL=""
