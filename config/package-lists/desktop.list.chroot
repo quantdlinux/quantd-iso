@@ -7,8 +7,3 @@ wireplumber
 # Bluetooth
 bluez
 blueman
-
-# Disk utilities
-gnome-disk-utility
-
-zenity

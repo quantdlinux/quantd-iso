@@ -14,3 +14,6 @@ cockpit-podman
 # Backup
 timeshift
 
+
+# Disk utilities
+gnome-disk-utility

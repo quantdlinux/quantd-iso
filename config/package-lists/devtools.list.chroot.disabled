@@ -27,3 +27,4 @@ gparted
 yq
 shellcheck
 direnv
+zenity
