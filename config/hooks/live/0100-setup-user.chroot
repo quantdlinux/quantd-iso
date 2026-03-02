@@ -1,0 +1,11 @@
+#!/bin/sh
+# Create user if not already there
+if ! id "quantd" >/dev/null 2>&1; then
+    useradd -m -s /bin/bash quantd
+fi
+
+# Set password to 'live'
+echo "quantd:live" | chpasswd
+
+# Give sudo access
+usermod -aG sudo,audio,video,cdrom,netdev quantd
