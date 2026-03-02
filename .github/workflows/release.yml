@@ -8,18 +8,34 @@ on:
 jobs:
   release:
     runs-on: ubuntu-22.04
+
     permissions:
       contents: write
+
+    container:
+      image: debian:trixie
+      options: --privileged
 
     steps:
    # Step 1: Clean the HOST runner before starting the build
       - name: Maximize Runner Disk Space
         run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /usr/local/lib/android
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo docker image prune -af
+          apt update
+          apt install -y \
+            git \
+            live-build \
+            debootstrap \
+            squashfs-tools \
+            xorriso \
+            grub-pc-bin \
+            grub-efi-amd64-bin \
+            mtools \
+            dosfstools \
+            syslinux-utils \
+            curl \
+            wget \
+            ca-certificates
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -30,7 +46,9 @@ jobs:
             git live-build debootstrap squashfs-tools xorriso \
             grub-pc-bin grub-efi-amd64-bin mtools dosfstools \
             syslinux-utils curl wget ca-certificates
-
+      - name: Clean previous build
+        run: |
+          lb clean --purge || true
       - name: Configure live-build
         run: |
           export MKSQUASHFS_OPTIONS="-comp xz -Xbcj x86 -b 1M -Xdict-size 100%"
@@ -39,19 +57,24 @@ jobs:
             --debian-installer live \
             --archive-areas "main contrib non-free non-free-firmware" \
             --binary-images iso-hybrid \
-            --mirror-bootstrap http://deb.debian.org/debian/ \
-            --mirror-binary http://deb.debian.org/debian/ \
-            --mirror-chroot http://deb.debian.org/debian/ \
+            --mirror-bootstrap http://deb.debian.org/debian \
+            --mirror-binary http://deb.debian.org/debian \
+            --mirror-chroot http://deb.debian.org/debian \
             --compression xz \
             --bootappend-live "boot=live components quiet splash hostname=quantd username=quantd live-config.user-default-groups=sudo,audio,video,cdrom,netdev"
 
+      - name: Build ISO
+        run: lb build
 
       - name: Rename and Hash ISO
         run: |
           ISO_NAME="quantd-${GITHUB_REF_NAME}.iso"
           mv *.iso "$ISO_NAME"
-          sha256sum "$ISO_NAME" > "$ISO_NAME.sha256"
           echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
+
+      - name: Generate SHA256
+        run: |
+          sha256sum "$ISO_NAME" > "$ISO_NAME.sha256"
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
