@@ -1,0 +1,15 @@
+# Browser
+firefox-esr
+
+# Audio
+pipewire
+pipewire-audio
+pipewire-pulse
+wireplumber
+
+# Bluetooth
+bluez
+blueman
+
+# Disk utilities
+gnome-disk-utility

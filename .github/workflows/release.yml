@@ -1,0 +1,78 @@
+name: Build & Release QuantD ISO
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+
+    permissions:
+      contents: write
+
+    container:
+      image: debian:trixie
+      options: --privileged
+
+    steps:
+      - name: Install dependencies
+        run: |
+          apt update
+          apt install -y \
+            git \
+            live-build \
+            debootstrap \
+            squashfs-tools \
+            xorriso \
+            grub-pc-bin \
+            grub-efi-amd64-bin \
+            mtools \
+            dosfstools \
+            syslinux-utils \
+            curl \
+            wget \
+            ca-certificates
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clean previous build
+        run: |
+          lb clean --purge || true
+
+      - name: Configure live-build
+        run: |
+          lb config \
+            --distribution trixie \
+            --debian-installer live \
+            --archive-areas "main contrib non-free non-free-firmware" \
+            --binary-images iso-hybrid \
+            --mirror-bootstrap http://deb.debian.org/debian \
+            --mirror-binary http://deb.debian.org/debian \
+            --mirror-chroot http://deb.debian.org/debian \
+            --security false \
+            --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+
+      - name: Build ISO
+        run: lb build
+
+      - name: Rename ISO
+        run: |
+          ISO_NAME="quantd-${GITHUB_REF_NAME}.iso"
+          mv *.iso "$ISO_NAME"
+          echo "ISO_NAME=$ISO_NAME" >> $GITHUB_ENV
+
+      - name: Generate SHA256
+        run: |
+          sha256sum "$ISO_NAME" > "$ISO_NAME.sha256"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ env.ISO_NAME }}
+            ${{ env.ISO_NAME }}.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

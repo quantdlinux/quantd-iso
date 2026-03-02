@@ -1,0 +1,15 @@
+# Virtualization
+vagrant
+qemu-system
+
+# Multimedia
+vlc
+gimp
+cheese
+
+# Web admin
+cockpit
+cockpit-podman
+
+# Backup
+timeshift

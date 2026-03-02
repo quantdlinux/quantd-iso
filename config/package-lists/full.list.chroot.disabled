@@ -1,0 +1,125 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 QuantD Cloud Native Linux Project
+
+# Full MATE Desktop
+task-mate-desktop
+mate-desktop-environment
+mate-desktop-environment-extras
+
+# PipeWire for audio
+pipewire
+pipewire-audio
+pipewire-pulse
+wireplumber
+libspa-0.2-bluetooth
+
+# Bluetooth
+bluez
+bluetooth
+blueman
+bluez-tools
+#pulseaudio-module-bluetooth
+
+# Display/login manager
+lightdm
+
+# Useful desktop apps
+firefox-esr
+vlc
+gimp
+file-roller
+meld
+ffmpeg
+gparted
+remmina
+xrdp
+ftp
+tigervnc-viewer
+cheese
+
+# Network
+network-manager
+network-manager-gnome
+
+# Essential tools
+sudo
+polkitd
+
+# Cloud-native: Kubernetes development and local testing
+kubectl
+kustomize
+kind
+
+# Cloud-native: container runtime experimentation
+containerd
+podman
+podman-compose
+buildah
+skopeo
+runc
+crun
+containernetworking-plugins
+cockpit
+cockpit-podman
+
+# Cloud-native: platform engineering, DevOps, and IaC workflows
+ansible
+ansible-lint
+jq
+yq
+yamllint
+shellcheck
+terraform-switcher
+
+# Cloud-native developer language/build toolchains
+golang-go
+default-jdk
+maven
+gradle
+
+# Editors and IDE experience
+geany
+kate
+neovim
+bluefish
+codeblocks
+emacs
+emacs-gtk
+gedit
+neovim
+notepadqq
+qtcreator
+vim-gtk3
+thonny
+codelite codelite-plugins
+bluefish 
+geany 
+qtcreator 
+lazarus 
+gambas3 
+eric 
+vim
+
+# Reproducible and isolated development environments
+direnv
+vagrant
+qemu-system
+
+#Pendrive boot creator
+gnome-disk-utility
+gnome-multi-writer
+
+#Backup
+timeshift
+
+#FileSystems
+ntfs-3g
+exfatprogs
+dosfstools
+btrfs-progs
+xfsprogs
+nfs-common
+cifs-utils
+udisks2
+gvfs
+gvfs-backends
