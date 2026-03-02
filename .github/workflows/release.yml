@@ -41,7 +41,6 @@ jobs:
       - name: Clean previous build
         run: |
           lb clean --purge || true
-          rm -rf config
 
       - name: Configure live-build
         run: |
