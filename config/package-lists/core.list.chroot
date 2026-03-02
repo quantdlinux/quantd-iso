@@ -10,3 +10,7 @@ network-manager-gnome
 # Essential system tools
 sudo
 polkitd
+
+# Basic utilities
+file-roller
+gparted
