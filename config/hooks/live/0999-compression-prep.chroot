@@ -1,0 +1,13 @@
+#!/bin/sh
+# 1. Clean apt cache
+apt-get clean
+apt-get autoremove --purge
+
+# 2. Remove documentation and man pages (Saves ~150MB-300MB)
+rm -rf /usr/share/doc/*
+rm -rf /usr/share/man/*
+rm -rf /usr/share/info/*
+
+# 3. Remove non-English locales (Saves ~100MB)
+# Note: Keep 'en' and 'C'
+find /usr/share/locale -mindepth 1 -maxdepth 1 ! -name 'en*' ! -name 'C*' -exec rm -rf {} +

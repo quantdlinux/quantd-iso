@@ -1,0 +1,19 @@
+#!/bin/sh
+# Force remove heavy packages that often sneak in
+apt-get purge -y \
+    libreoffice* \
+    thunderbird* \
+    evolution* \
+    gnome-games* \
+    rhythmbox* \
+    shotwell* \
+    simple-scan
+
+# Remove non-essential firmware (Check your target hardware first!)
+# firmware-realtek, firmware-atheros, and firmware-amd-graphics are huge.
+apt-get purge -y \
+    firmware-amd-graphics \
+    firmware-nvidia-gsp-bin \
+    firmware-misc-nonfree
+    
+apt-get autoremove --purge -y

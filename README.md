@@ -169,6 +169,9 @@ sudo apt install -y live-build xorriso curl wget git
 From the repository root:
 
 ```bash
+# Set high-extreme compression for the squashfs
+export MKSQUASHFS_OPTIONS="-comp xz -Xbcj x86 -b 1M -Xdict-size 100%"
+
 sudo lb clean --purge
 lb config \
   --distribution trixie \
@@ -178,9 +181,10 @@ lb config \
   --mirror-bootstrap http://deb.debian.org/debian/ \
   --mirror-binary http://deb.debian.org/debian/ \
   --mirror-chroot http://deb.debian.org/debian/ \
-  --mirror-binary-security http://security.debian.org/ \
-  --mirror-chroot-security http://security.debian.org/ \
-  --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"  
+  --compression xz \
+  --apt-recommends true \
+  --apt-indices false \
+  --bootappend-live "boot=live components quiet splash hostname=quantd username=quantd"
 sudo lb build
 ```
 

@@ -17,7 +17,8 @@ jobs:
       options: --privileged
 
     steps:
-      - name: Install dependencies
+   # Step 1: Clean the HOST runner before starting the build
+      - name: Maximize Runner Disk Space
         run: |
           apt update
           apt install -y \
@@ -34,6 +35,8 @@ jobs:
             curl \
             wget \
             ca-certificates
+          apt-get autoremove --purge -y
+
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -41,9 +44,9 @@ jobs:
       - name: Clean previous build
         run: |
           lb clean --purge || true
-
       - name: Configure live-build
         run: |
+          export MKSQUASHFS_OPTIONS="-comp xz -Xbcj x86 -b 1M -Xdict-size 100%"
           lb config \
             --distribution trixie \
             --debian-installer live \
@@ -53,12 +56,14 @@ jobs:
             --mirror-binary http://deb.debian.org/debian \
             --mirror-chroot http://deb.debian.org/debian \
             --compression xz \
-            --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+            --apt-recommends true \
+            --apt-indices false \
+            --bootappend-live "boot=live components quiet splash hostname=quantd username=quantd live-config.user-default-groups=sudo,audio,video,cdrom,netdev"
 
       - name: Build ISO
         run: lb build
 
-      - name: Rename ISO
+      - name: Rename and Hash ISO
         run: |
           ISO_NAME="quantd-${GITHUB_REF_NAME}.iso"
           mv *.iso "$ISO_NAME"

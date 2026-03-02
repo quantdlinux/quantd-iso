@@ -1,0 +1,20 @@
+#!/bin/sh
+# Create the user manually in the filesystem
+if ! id "quantd" >/dev/null 2>&1; then
+    useradd -m -s /bin/bash quantd
+fi
+
+# Set the password to 'live'
+echo "quantd:live" | chpasswd
+
+# Grant sudo permissions without a password prompt
+echo "quantd ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/quantd
+chmod 0440 /etc/sudoers.d/quantd
+
+# Add to essential hardware and system groups
+usermod -aG sudo,audio,video,cdrom,netdev quantd
+
+# Remove the default 'user' to prevent the conflict seen in your screenshot
+if id "user" >/dev/null 2>&1; then
+    userdel -r user || true
+fi

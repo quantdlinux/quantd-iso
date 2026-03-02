@@ -1,22 +1,19 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2026 QuantD Cloud Native Linux Project
 
-# PipeWire for audio
-pipewire
-pipewire-audio
-pipewire-pulse
-wireplumber
-libspa-0.2-bluetooth
 
-# Bluetooth
-bluez
-bluetooth
-blueman
-bluez-tools
-
+# Audio & Bluetooth (Consolidated)
+#pipewire
+#pipewire-audio
+#pipewire-pulse
+#wireplumber
+#bluez
+#bluetooth
+#libspa-0.2-bluetooth
 
 # Disk utilities
-gnome-disk-utility
+#gnome-disk-utility
 
-# Browser
-firefox-esr
+# Browser Swap (Crucial for 200MB+ savings)
+# firefox-esr  <-- Remove this
+#falkon
