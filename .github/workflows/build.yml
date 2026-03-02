@@ -24,23 +24,13 @@ jobs:
         run: |
           apt update
           apt install -y \
-            git \
-            live-build \
-            debootstrap \
-            squashfs-tools \
-            xorriso \
-            grub-pc-bin \
-            grub-efi-amd64-bin \
-            mtools \
-            dosfstools \
-            syslinux-utils \
-            curl \
-            wget \
-            ca-certificates
+            git live-build debootstrap squashfs-tools xorriso \
+            grub-pc-bin grub-efi-amd64-bin mtools dosfstools \
+            syslinux-utils curl wget ca-certificates
 
       - name: Clean previous build
-        run: |
-          lb clean --purge || true
+        run: lb clean --purge || true
+
       - name: Configure live-build
         run: |
           lb config \
@@ -52,7 +42,24 @@ jobs:
             --mirror-binary http://deb.debian.org/debian \
             --mirror-chroot http://deb.debian.org/debian \
             --compression xz \
-            --bootappend-live "boot=live components quiet splash hostname=quantd user=quantd"
+            --bootappend-live "boot=live components quiet splash hostname=quantd username=quantd"
+
+      # FIX 1: Ensure essential live configuration packages are included
+      - name: Add required packages
+        run: |
+          mkdir -p config/package-lists
+          echo "live-boot live-config live-config-systemd sudo user-setup" > config/package-lists/live.list.chroot
+
+      # FIX 2: Create a hook to set the password for the 'quantd' user
+      - name: Create password hook
+        run: |
+          mkdir -p config/hooks/live
+          cat <<EOF > config/hooks/live/0100-set-password.chroot
+          #!/bin/sh
+          echo "quantd:live" | chpasswd
+          usermod -aG sudo,audio,video,cdrom,netdev quantd
+          EOF
+          chmod +x config/hooks/live/0100-set-password.chroot
 
       - name: Build ISO
         run: lb build

@@ -7,3 +7,6 @@ live-config-systemd
 systemd-sysv
 calamares
 calamares-settings-debian
+user-setup
+sudo
+polkitd
